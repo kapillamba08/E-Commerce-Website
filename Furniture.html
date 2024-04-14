@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Grocery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Furniture Deals</title>
+    <style>
+        .cart-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        #cartTotal {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #cartOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .cart-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1">
+        <div class="home">
+            <a href="main.html"><i class="fa-solid fa-house homeicon"></i></a>
+        </div>
+        <div>
+            <h3 class="h3">Demanding Furniture</h3>
+        </div>
+        <div class="cart" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping cartstyle border"></i>
+            <span id="cartCount">0</span>
+        </div>
+    </div>
+
+    <div class="c2">
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/51hAa+TwhXL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Faux Leather Bag</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="FurnitureImg/61cIMCyNN5L._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Office Chair</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="FurnitureImg/61nXbJloO3L._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Cotton Swinging</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/61txAf2xF8L._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Wooden Foldable Table</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+    </div>
+    <div class="c3">
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/71A31NB7IwL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Dining Table</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/71dwNn3tpCL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">BookShelf Cabinet Book</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/71ETTTGYfnL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Home Sparkle MDF</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/71ORYOVmtGL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Modern Square End Table</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+    </div>
+
+    <div class="c3">
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/71ykuq8hTTL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Dence Store Bench</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/81yswKKDH3L._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Freedom Mini Medium</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/91yD7jbDXvL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Portable Centre Table</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FurnitureImg/71Z6ompJnBL._AC_UL640_FMwebp_QL65_.webp"></a>
+            <div class="image-text">Home Centre Emily</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+    </div>
+
+
+    <div id="cartOverlay">
+        <div class="cart-content">
+            <span class="close-btn" onclick="toggleCart()">X</span>
+            <h2>Your Cart</h2>
+            <div id="cartItems">
+            
+            </div>
+            <div id="cartTotal">Total Items: <span id="totalItems">0</span></div>
+            <div class="cart-buttons" id="proceedToOrderButton" style="display: none;">
+                <button onclick="proceedToOrder()"><a href="Payments.html">Proceed to Order</a></button>
+            </div>
+            <div id="emptyCartMessage" style="display: none;">Your cart is empty. Please add items to order.</div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(name, price) {
+            var cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            var img = document.createElement("img");
+            img.src = "/GroceryImg/" + name + "Img.jpeg";
+            cartItem.appendChild(img);
+
+            var details = document.createElement("div");
+            details.classList.add("cart-item-details");
+            details.textContent = name + " - $" + price;
+            cartItem.appendChild(details);
+
+            var removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.onclick = function() {
+                removeItem(cartItem);
+            };
+            cartItem.appendChild(removeButton);
+
+            document.getElementById("cartItems").appendChild(cartItem);
+
+            var totalItems = parseInt(document.getElementById("totalItems").textContent);
+            totalItems++;
+            document.getElementById("totalItems").textContent = totalItems;
+
+            var cartCount = parseInt(document.getElementById("cartCount").textContent);
+            cartCount++;
+            document.getElementById("cartCount").textContent = cartCount;
+
+            toggleProceedToOrderButton();
+        }
+
+        function removeItem(item) {
+            item.parentNode.removeChild(item);
+
+            var totalItems = parseInt(document.getElementById("totalItems").textContent);
+            totalItems--;
+            document.getElementById("totalItems").textContent = totalItems;
+
+            var cartCount = parseInt(document.getElementById("cartCount").textContent);
+            cartCount--;
+            document.getElementById("cartCount").textContent = cartCount;
+
+            toggleProceedToOrderButton();
+        }
+
+        function toggleProceedToOrderButton() {
+            var cartItems = document.querySelectorAll('.cart-item');
+            var proceedToOrderButton = document.getElementById('proceedToOrderButton');
+            if (cartItems.length === 0) {
+                proceedToOrderButton.style.display = 'none';
+            } else {
+                proceedToOrderButton.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.addtocart');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    var itemName = button.parentElement.querySelector('.image-text').textContent;
+                    var itemPrice = 10;
+                    addToCart(itemName, itemPrice);
+                });
+            });
+        });
+
+        function toggleCart() {
+            var overlay = document.getElementById("cartOverlay");
+            if (overlay.style.display === "block") {
+                overlay.style.display = "none";
+            } else {
+                overlay.style.display = "block";
+            }
+        }
+
+        function proceedToOrder() {
+            alert("Proceeding to order...");
+        }
+    </script>
+    
+</body>
+</html>

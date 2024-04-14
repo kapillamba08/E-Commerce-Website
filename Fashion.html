@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Grocery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Fashion Deals</title>
+    <style>
+        .cart-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        #cartTotal {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #cartOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .cart-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .cart-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1">
+        <div class="home">
+            <a href="main.html"><i class="fa-solid fa-house homeicon"></i></a>
+        </div>
+        <div>
+            <h3 class="h3">Today's Deals</h3>
+        </div>
+        <div class="cart" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping cartstyle border"></i>
+            <span id="cartCount">0</span>
+        </div>
+    </div>
+
+    <div class="c2">
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/31DcH6d-bgL._AC_UF452,452_FMjpg_.jpg"></a>
+            <div class="image-text">Casual Shoes</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/41e+WjJ4P-L._AC_UF452,452_FMjpg_.jpg"></a>
+            <div class="image-text">Womens Bag</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/10._SS400_QL85_.jpg"></a>
+            <div class="image-text">Sports Wear</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/71wuD8IzqtL._AC_UL640_QL65_.jpg"></a>
+            <div class="image-text">Jewellary</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+    </div>
+    <div class="c3">
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/91kKqnkv9jL._AC_UF452,452_FMjpg_.jpg"></a>
+            <div class="image-text">Sports Shoes</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/Beauty_4._SX564_QL85_FMpng_.png"></a>
+            <div class="image-text">Facial</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/Formal_Wear._SY530_QL85_FMpng_.png"></a>
+            <div class="image-text">Formal Wear</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/Jaguar_7._SX564_QL85_FMpng_.png"></a>
+            <div class="image-text">Perfumes</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+    </div>
+
+    <div class="c3">
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/Kids_fashion._SY795_QL85_FMpng_.png"></a>
+            <div class="image-text">Kids Wear</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/mens_watches_PC._CB574127819_.png"></a>
+            <div class="image-text">Mens Watches</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/U-S-POLO_8._SX564_QL85_FMpng_.png"></a>
+            <div class="image-text">Summer Wear</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+        <div class="a">
+            <a href="Payments.html" onclick="proceedToOrder()"><img src="/FashionImg/bags._CB574126128_.png"></a>
+            <div class="image-text">Bags and Wallets</div>
+            <div class="addtocart">Add to cart</div>
+        </div>
+    </div>
+
+
+    <div id="cartOverlay">
+        <div class="cart-content">
+            <span class="close-btn" onclick="toggleCart()">X</span>
+            <h2>Your Cart</h2>
+            <div id="cartItems">
+            
+            </div>
+            <div id="cartTotal">Total Items: <span id="totalItems">0</span></div>
+            <div class="cart-buttons" id="proceedToOrderButton" style="display: none;">
+                <button onclick="proceedToOrder()"><a href="Payments.html">Proceed to Order</a></button>
+            </div>
+            <div id="emptyCartMessage" style="display: none;">Your cart is empty. Please add items to order.</div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart(name, price) {
+            var cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            var img = document.createElement("img");
+            img.src = "/GroceryImg/" + name + "Img.jpeg";
+            cartItem.appendChild(img);
+
+            var details = document.createElement("div");
+            details.classList.add("cart-item-details");
+            details.textContent = name + " - $" + price;
+            cartItem.appendChild(details);
+
+            var removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.onclick = function() {
+                removeItem(cartItem);
+            };
+            cartItem.appendChild(removeButton);
+
+            document.getElementById("cartItems").appendChild(cartItem);
+
+            var totalItems = parseInt(document.getElementById("totalItems").textContent);
+            totalItems++;
+            document.getElementById("totalItems").textContent = totalItems;
+
+            var cartCount = parseInt(document.getElementById("cartCount").textContent);
+            cartCount++;
+            document.getElementById("cartCount").textContent = cartCount;
+
+            toggleProceedToOrderButton();
+        }
+
+        function removeItem(item) {
+            item.parentNode.removeChild(item);
+
+            var totalItems = parseInt(document.getElementById("totalItems").textContent);
+            totalItems--;
+            document.getElementById("totalItems").textContent = totalItems;
+
+            var cartCount = parseInt(document.getElementById("cartCount").textContent);
+            cartCount--;
+            document.getElementById("cartCount").textContent = cartCount;
+
+            toggleProceedToOrderButton();
+        }
+
+        function toggleProceedToOrderButton() {
+            var cartItems = document.querySelectorAll('.cart-item');
+            var proceedToOrderButton = document.getElementById('proceedToOrderButton');
+            if (cartItems.length === 0) {
+                proceedToOrderButton.style.display = 'none';
+            } else {
+                proceedToOrderButton.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.addtocart');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    var itemName = button.parentElement.querySelector('.image-text').textContent;
+                    var itemPrice = 10;
+                    addToCart(itemName, itemPrice);
+                });
+            });
+        });
+
+        function toggleCart() {
+            var overlay = document.getElementById("cartOverlay");
+            if (overlay.style.display === "block") {
+                overlay.style.display = "none";
+            } else {
+                overlay.style.display = "block";
+            }
+        }
+
+        function proceedToOrder() {
+            alert("Proceeding to order...");
+        }
+    </script>
+    
+</body>
+</html>

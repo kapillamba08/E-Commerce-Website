@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        div {
+            width: 420px;
+            background: transparent;
+            color: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgb(110, 110, 181);
+            background: url(LoginPageBackgroundImg.avif) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .head {
+            font-size: 36px;
+            text-align: center;
+        }
+        .input {
+            position: relative;
+            width: 97%;
+            height: 45px;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 40px;
+            font-weight: 600;
+            padding-right: 20px 45px 20px 20px;
+        }
+        .input::placeholder {
+            padding-left: 70px;
+            font-size: 18px;
+        }
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, -1);
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            padding-right: 280px;
+        }
+        .regs {
+            font-style: italic;
+            color: red;
+        }
+        .reset-section {
+            display: none; 
+        }
+        .ind {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 420px;
+            background: transparent;
+            color: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+        }
+        .pass{
+            display: flex;
+            align-items: center;
+            padding-bottom: 30px;
+        }
+        .eyeicon{
+            background:none;
+            width: 50px;
+            height:50px;
+            border-radius: 20px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            font-size: 1.3rem;
+        }
+        .inppass{
+            position: relative;
+            width: calc(100% - 55px); 
+            height:45px;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid rgba(255,255,255,.2);
+            border-radius: 40px;
+            font-weight: 600;
+            padding-right: 20px 45px 20px 20px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .inppass::placeholder {
+            padding-left: 70px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ind">
+        <h3 class="head">Sign In</h3>
+        <p class="name">Email</p>
+        <input id="email" class="input" type="email" placeholder="E-mail" required><br><br>
+        <p class="name">Password</p>
+        <div class="pass">
+            <input id="pass" type="password" class="inppass" placeholder="Password" required>
+            <button class="eyeicon" onclick="togglePasswordVisibility('pass', 'eyeicon')"><i class="fas fa-eye"></i></button>
+        </div>
+        <button class="btn" onclick="login()">Log in</button><br> <br>
+        <button class="btn" onclick="refreshPage()">Reset</button>
+        <div class="reset-section">
+            <p>Forgot your password? Enter your email below to reset it.</p>
+            <input type="email" id="resetEmail" class="input" placeholder="Enter your email" required><br><br>
+            <button class="btn" onclick="resetPassword()">Reset Password</button>
+        </div>
+        <p>Don't have an account? <a href="register.html" class="regs">Register now</a></p>
+    </div>
+
+    <script>
+        var wrongAttempts = 0;
+
+        function refreshPage() {
+            location.reload();
+        }
+
+        function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("pass").value; 
+
+    // Check if email and password are empty
+    if (email.trim() === "" || password.trim() === "") {
+        alert("Please input email and password.");
+        return;
+    }
+
+    if (localStorage.getItem(email) === password) {
+        alert("Login successful!");
+        window.location.href = "main.html"; 
+    } else {
+        wrongAttempts++;
+        if (wrongAttempts >= 3) {
+            document.querySelector('.reset-section').style.display = 'block';
+        }
+        alert("Incorrect email or password. Please try again.");
+    }
+}
+
+
+        function resetPassword() {
+            var resetEmail = document.getElementById("resetEmail").value;
+            if (localStorage.getItem(resetEmail)) {
+                var newPassword = Math.random().toString(36).substr(2, 8); 
+                localStorage.setItem(resetEmail, newPassword);
+                alert("Your new password is: " + newPassword);
+            } else {
+                alert("Email not found. Please enter a valid email address.");
+            }
+        }
+
+        function togglePasswordVisibility(inputId, buttonId) {
+            var input = document.getElementById(inputId);
+            var button = document.getElementById(buttonId);
+            if (input.type === "password") {
+                input.type = "text";
+                button.innerHTML = "<i class='fas fa-eye-slash'></i>";
+            } else {
+                input.type = "password";
+                button.innerHTML = "<i class='fas fa-eye'></i>";
+            }
+        }
+    </script>
+</body>
+</html>

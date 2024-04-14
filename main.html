@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Instant Shopping</title>
+</head>
+<body>
+    <div class="navbar">
+        <img src="InstantShopping.png" class="logo border">
+        <div class="border">
+            <p class="del">Delivery to</p>
+            <div class="add-icon">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="Ind">India</p>
+            </div>
+        </div>
+        <div class="nav-search">
+            <select class="search-select">
+                <option>All</option>
+                <option>Grocery</option>
+                <option>Mobile</option>
+                <option>Fashion</option>
+                <option>Electronics</option>
+                <option>Home&Furniture</option>
+                <option>Travel</option>
+                <option>Two Wheeler</option>
+            </select>
+            <input placeholder="Search" class="search-box">
+            <div class="search-icon border">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <div class="language">
+            <i class="fa-solid fa-language border" ></i>
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">Eng</option>
+                <option value="hi">हिंदी</option>
+            </select>
+        </div>
+        <div class="bulb">
+            <i class="fa-solid fa-lightbulb bulbstyle border" onclick="myFunction()"></i>
+        </div>
+        <div class="cart" onclick="cart()">
+            <i class="fa-solid fa-cart-shopping cartstyle border"></i>
+        </div>
+        <div class="profile">
+            <a href="profile.html">
+            <i class="fa-solid fa-user profilestyle border"></i></a>
+        </div>
+        <div class="menu">
+            <i class="fa-solid fa-bars menuli border" onclick="toggleMenu()"></i>
+            <ul class="menu-items">
+                <li onclick="showAbout()">About</li>
+                <div id="aboutContent" style="display: none;">
+                </div>
+                <li onclick="help()">Help</li>
+                <div id="abouthelp" style="display: none;">
+                </div>
+                <a href="Payments.html"> <li class="a">Shipping</li></a>
+                <li onclick="contact()">Contact Us</li>
+                <div id="contact" style="display: none;">
+                </div>
+                <li onclick="cr()">Cancellation & Returns</li>
+                <div id="cr" style="display: none;">
+                </div>
+            </ul>
+        </div>
+        
+    </div>
+    
+    <script>
+        function cart(){
+            alert("Your cart is Empty!");
+        }
+        
+        function toggleMenu() {
+        
+    }
+    function contact() {
+    var helpContent = document.getElementById("contact");
+    if (helpContent.style.display === "none") {
+        helpContent.innerHTML = '<div class="centered-content"> <p>Contact at: 8000832007</p></div>';
+        helpContent.style.display = "flex";
+    } else {
+        helpContent.innerHTML = ""; 
+        helpContent.style.display = "none";
+    }
+}
+
+    function cr() {
+        var helpContent = document.getElementById("cr");
+        if (helpContent.style.display === "none") {
+            helpContent.innerHTML = "<p>For cancellation or return, please contact us at: instcr@gmail.com or call at 6377054831</p>";
+            helpContent.style.display = "block";
+        } else {
+            helpContent.innerHTML = ""; 
+            helpContent.style.display = "none";
+        }
+    }
+    function help() {
+        var helpContent = document.getElementById("abouthelp");
+        if (helpContent.style.display === "none") {
+            helpContent.innerHTML = "<p>For assistance, please contact us at: instsupport@example.com or call at 6377054831</p>";
+            helpContent.style.display = "block";
+        } else {
+            helpContent.innerHTML = ""; 
+            helpContent.style.display = "none";
+        }
+    }
+
+    function showAbout() {
+        var aboutContent = document.getElementById("aboutContent");
+        if (aboutContent.style.display === "none") {
+            aboutContent.innerHTML = "<p>Email: instantshop@gmail.com</p><p>Address: Bhagat Singh Chowk, Jhunjhunu, India</p>";
+            aboutContent.style.display = "block";
+        } else {
+            aboutContent.innerHTML = ""; 
+            aboutContent.style.display = "none";
+        }
+    }
+        function myFunction() {
+           var element = document.body;
+           element.classList.toggle("dark-mode");
+        }
+
+        function toggleMenu() {
+            var menuItems = document.querySelector('.menu-items');
+            menuItems.classList.toggle('open');
+        }
+    </script>
+    <div class="outer-div">
+    <div class="nav2">
+        <div class="grocery">
+            <a href="Grocery.html">
+            <img src="images/groceryImg.jpeg" class="gro"></a>
+            <p class="groc">Grocery</p>
+        </div>
+        <div class="mobile">
+            <a href="Mobile.html"><img src="images/PhoneImg.png" class="mob"></a>
+            <p class="mobi">Mobile</p>
+        </div>
+        <div class="fashion">
+            <a href="Fashion.html"><img src="images/FashionImg.jpeg" class="fas"></a>
+            <p class="fash">Fashion</p>
+        </div>
+        <div class="electronics">
+            <a href="Electronics.html"><img src="images/ElecImg.jpeg" class="ele"></a>
+            <p class="elec">Electronics</p>
+        </div>
+        <div class="furniture">
+            <a href="Furniture.html"><img src="images/FurImg.jpeg" class="fur"></a>
+            <p class="furn">Home&Furniture</p>
+        </div>
+        <div class="travel">
+            <a href="https://www.makemytrip.com/flight/search?tripType=O&itinerary=DEL-PNQ-14/04/2024&paxType=A-1_C-0_I-0&cabinClass=E&sTime=1713092472001&forwardFlowRequired=true&gclid=Cj0KCQjwiMmwBhDmARIsABeQ7xTTlR_Obz9Ttp7VoN6n2BgcXlr5sy485POPcmP6k3xC9hT9xpUvBUAaAvYzEALw_wcB&action=FLTSRCH&retnDate=&intl=false&cmp=SEM%7CD%7CDF%7CG%7CRoute%7CRoute-SL_Rank_DT%7CDF_Route_Delhi_Pune_Exact%7CDelhi_Pune_Exact%7CRSA%7C532427477455&s_kwcid=AL!1631!3!532427477455!e!!g!!book%20flight%20tickets&ef_id=Cj0KCQjwiMmwBhDmARIsABeQ7xTTlR_Obz9Ttp7VoN6n2BgcXlr5sy485POPcmP6k3xC9hT9xpUvBUAaAvYzEALw_wcB:G:s&gad_source=1&isSemFlow=true">
+                <img src="/images/FlightImg.jpeg" class="tra">
+            </a>
+            <p class="trav">Travel</p>
+        </div>
+        <div class="2Wheeler">
+            <a href="https://www.bikedekho.com/"><img src="/images/VehicleImg.jpeg" class="Whe"></a>
+            <p class="Whee">Two Wheelers</p>
+        </div>
+    </div>
+</div>
+     <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <a href="Payments.html">
+          <img src="/images/5300---Kitchen---Citi-bank-stripe-update--under_699_PC-3000._CB561101378_.jpg" style="width:100%"></a>
+        </div>
+        
+        <div class="mySlides fade">
+        <a href="Payments.html">
+          <img src="/images/D103625178_DesktopTallHero_3000x1200._CB574597993_.jpg" style="width:100%"></a>
+    
+        </div>
+        
+        <div class="mySlides fade">
+        
+          <img src="/images/81QmB7po9EL._SX3000_.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <a href="Payments.html">
+            <img src="images/6th_April-PC._CB561881865_.jpg" style="width:100%"></a>
+        </div>
+
+        <div class="mySlides fade">
+            <a href="Payments.html">
+            <img src="images/D123068930_WLD_OnePlus_Benz_NewLaunch_DesktopTall_Hero_3000x1200._CB561888169_.jpg" style="width:100%"></a>
+        </div>
+
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span>
+        </div>
+        
+        
+        <script>
+        let slideIndex = 0;
+        showSlides();
+        function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex >= slides.length) {
+            slideIndex = 0; 
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex].style.display = "block";  
+        dots[slideIndex].className += " active";
+        setTimeout(showSlides, 2000); 
+        }
+
+
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+
+        function changeLanguage() {
+            var selectedLanguage = document.getElementById("languageSelect").value;
+            var divElements = document.getElementsByTagName("div");
+
+            for (var i = 0; i < divElements.length; i++) {
+                var div = divElements[i];
+                var key = div.getAttribute("data-translate");
+
+                if (translations[selectedLanguage] && translations[selectedLanguage][key]) {
+                    div.textContent = translations[selectedLanguage][key];
+                }
+            }
+        }
+
+        var translations = {
+            "en": {
+                "deliveryTo": "Delivery to",
+                "searchPlaceholder": "Search",
+                "India": "India"
+            },
+            "hi": {
+                "deliveryTo": "डिलिवरी के लिए",
+                "searchPlaceholder": "खोजें",
+                "India": "भारत"
+            }
+        };
+
+        changeLanguage();
+
+        function scrollRight() {
+        const container = document.querySelector('.lastImg');
+        container.scrollBy({left: 200, behavior: 'smooth'});
+    }
+        </script>
+
+        <div class="box">
+            <div class="box1 boxx">
+                <a href="Payments.html"> <img src="/images/SchoolAccessories.jpeg" height="210px" width="230px"></a>
+            </div>
+
+            <div class="box2 boxx">
+                <a href="Payments.html"> <img src="/images/Sports.jpeg"></a>
+            </div>
+
+            <div class="box3 boxx">
+                <a href="Payments.html"><img src="/images/SmartWatch.jpeg" height="210px" width="280px"></a>
+            </div>
+
+            <div class="box4 boxx">
+                <a href="Payments.html"><img src="/images/Recharge.jpeg"height="210px" width="280px"></a>
+            </div>
+        </div>
+        <br><br>
+        <div class="offers">
+            <div class="frow">
+                <div class="first">
+                    <a href="Payments.html"> <img src="Secondary Images/0b498e7f038c8709.webp" width="480px"></a> 
+                </div>
+                <div class="second">
+                    <a href="Payments.html"><img src="Secondary Images/5ef6129767821c91.webp" width="480px"></a> 
+                </div>
+                <div class="third">
+                    <a href="Payments.html"><img src="Secondary Images/fc58f4a259f34408.webp" width="480px"></a> 
+                </div>
+            </div>
+            <br><br>
+            <div class="srow">
+                <div class="first">
+                    <a href="Payments.html"><img src="Secondary Images/8ae19ce4cf4f2775.webp" width="480px"></a> 
+                </div>
+                <div class="second">
+                    <a href="Payments.html"> <img src="Secondary Images/10a565251f101a65.webp" width="480px"></a> 
+                </div>
+                <div class="third">
+                    <a href="Payments.html"><img src="Secondary Images/9926b000d9e06f79.webp" width="480px"></a> 
+                </div>
+            </div>
+            <br><br>
+            <div class="srow">
+                <div class="first">
+                    <a href="Payments.html"><img src="Secondary Images/c2941dd6784e0fb0.webp" width="480px"></a> 
+                </div>
+                <div class="second">
+                    <a href="Payments.html"><img src="Secondary Images/ec6cf773ae886bd7.webp" width="480px"></a> 
+                </div>
+                <div class="third">
+                    <a href="Payments.html"><img src="Secondary Images/f19c2affe0ff4316.webp" width="480px"></a> 
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="lastImg">
+            <img src="LastImg/0c8216ea83c21cbe.webp">
+            <img src="LastImg/4f394183d383d684.webp">
+            <img src="LastImg/8f0242ded1d50c81.webp">
+            <img src="LastImg/8f0242ded1d50c81.webp">
+            <img src="LastImg/aa657f0d19dcee2e.webp">
+            <img src="LastImg/e17d20f1f0ec9260.webp">
+            <img src="LastImg/e681c8e2f5cb5a97.webp">
+            <img src="LastImg/fa123dd6218df880.webp">
+        </div>
+        <div class="arrow" onclick="scrollRight()"> &rarr; </div><br>
+        <div class="dis">
+            <img src="disc.png" width="100%" height="150px">
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <img src="InstantShopping.png" alt="Footer Image" class="footer-image">
+                </div>
+                <div class="footer-right">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    <p><span></span> ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                </div>
+            </div>
+        </footer>
+        
+        
+</body>
+</html>
